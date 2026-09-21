@@ -10,7 +10,7 @@ RUN echo 'root:MyStrongPassword123' | chpasswd
 # Root login allow karo
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
-
+RUN ssh-keygen -A
 EXPOSE 8080
 
 CMD ["/usr/sbin/sshd", "-D", "-p", "8080"]
